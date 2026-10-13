@@ -47,3 +47,4 @@ const donationSchema = new mongoose.Schema(
   }
 
 );
+module.exports = mongoose.model("Donation", donationSchema);

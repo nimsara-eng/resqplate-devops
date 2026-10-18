@@ -7,6 +7,7 @@
 import { useState, useMemo } from 'react';
 import Footer from './components/layout/Footer.jsx';
 import './App.css';
+import AuthModal from "./components/auth/AuthModal";
 
 // Local High-Resolution Food Assets
 import heroPizzaImg from './assets/Pizza-3007395.jpg';
@@ -199,6 +200,13 @@ export default function App() {
     setNewQuantity('');
     setNewLocation('');
     setNewInstructions('');
+  };
+  const handleLogin = () => {
+    console.info("Login API not connected yet.");
+  };
+
+  const handleSignup = () => {
+    console.info("Signup API not connected yet.");
   };
 
   return (
@@ -1046,79 +1054,12 @@ export default function App() {
       )}
 
       {/* Modal: Authentication Status (Honest, No Fake Login) */}
-      {isAuthModalOpen && (
-        <div
-          className="resq-modal-overlay"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setIsAuthModalOpen(false)}
-        >
-          <div
-            className="resq-modal-content"
-            onClick={(e) => e.stopPropagation()}
-            style={{ maxWidth: '500px' }}
-          >
-            <div className="resq-modal-header">
-              <h3 className="resq-modal-title">Portal Authentication Status</h3>
-              <button
-                type="button"
-                className="resq-modal-close"
-                onClick={() => setIsAuthModalOpen(false)}
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="resq-modal-body">
-              <div style={{ textAlign: 'center', padding: '12px 0' }}>
-                <div
-                  style={{
-                    width: '56px',
-                    height: '56px',
-                    borderRadius: '50%',
-                    background: 'var(--color-forest-subtle)',
-                    color: 'var(--color-forest)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 16px',
-                    fontSize: '1.5rem'
-                  }}
-                >
-                  🛡️
-                </div>
-                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', color: 'var(--color-forest-dark)', marginBottom: '8px' }}>
-                  Authentication Module Staged
-                </h4>
-                <p style={{ fontSize: '0.875rem', color: 'var(--color-charcoal-muted)', lineHeight: '1.5' }}>
-                  In accordance with the project roadmap, the frontend authentication flow is decoupled until the backend database (Node / MongoDB / Auth) is connected in Phase 2.
-                </p>
-              </div>
-
-              <div style={{ background: 'var(--color-cream)', padding: '16px', borderRadius: '8px', border: '1px solid var(--color-border)', fontSize: '0.84rem' }}>
-                <div style={{ fontWeight: 600, color: 'var(--color-forest)', marginBottom: '8px' }}>
-                  Scheduled User Roles for Next Sprint:
-                </div>
-                <ul style={{ paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--color-charcoal-muted)' }}>
-                  <li><strong>Commercial Kitchen Provider:</strong> Restaurant/Bakery dashboard, food log history, safe handling verification.</li>
-                  <li><strong>Verified Community Collector:</strong> 501(c)(3) charities, student pantry leaders, community organizers.</li>
-                  <li><strong>Individual Neighbor:</strong> Direct pickup quota for household consumption.</li>
-                </ul>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
-                <button
-                  type="button"
-                  className="resq-btn-primary"
-                  onClick={() => setIsAuthModalOpen(false)}
-                >
-                  Understood & Continue Preview
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        onLogin={handleLogin}
+        onSignup={handleSignup}
+      />
     </div>
   );
 }

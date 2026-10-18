@@ -1,129 +1,58 @@
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaGithub,
-  FaEnvelope,
-  FaPhoneAlt,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
-import "./Footer.css";
-
-function Footer() {
-  const currentYear = new Date().getFullYear();
-
+export default function Footer({ onOfferFood, onOpenAuth }) {
   return (
-    <footer className="footer">
-      <div className="footer-container">
+    <footer className="resq-footer" role="contentinfo">
+      <div className="resq-container">
+        <div className="resq-footer-grid">
+          <div className="resq-footer-brand">
+            <span className="resq-footer-logo">ResQPlate</span>
+            <p className="resq-footer-mission">
+              Connecting local restaurants, bakeries, and event organizers who have safe surplus food with registered community organizations and neighbors for direct pickup.
+            </p>
+          </div>
 
-        {/* Brand Section */}
-        <div className="footer-section footer-brand">
-          <h2>ResQPlate</h2>
+          <div className="resq-footer-col">
+            <h4 className="resq-footer-heading">Platform</h4>
+            <ul className="resq-footer-links">
+              <li><a href="#find-food" className="resq-footer-link">Browse Surplus Food</a></li>
+              <li><a href="#how-it-works" className="resq-footer-link">How Pickup Works</a></li>
+              <li><a href="#safety-standards" className="resq-footer-link">Safety Principles</a></li>
+              <li><a href="#community-impact" className="resq-footer-link">Pilot Impact Data</a></li>
+            </ul>
+          </div>
 
-          <p>
-            Connecting surplus food with people who need it while helping
-            reduce food waste in our communities.
-          </p>
+          <div className="resq-footer-col">
+            <h4 className="resq-footer-heading">For Providers</h4>
+            <ul className="resq-footer-links">
+              <li><span className="resq-footer-link" onClick={onOfferFood}>List Food Item</span></li>
+              <li><span className="resq-footer-link" onClick={onOpenAuth}>Kitchen Registration</span></li>
+              <li><span className="resq-footer-link" onClick={onOpenAuth}>Good Samaritan Legal Guide</span></li>
+              <li><span className="resq-footer-link" onClick={onOpenAuth}>Container Protocols</span></li>
+            </ul>
+          </div>
 
-          <div className="social-icons">
-            <a href="#" aria-label="Facebook">
-              <FaFacebookF />
-            </a>
-
-            <a href="#" aria-label="Instagram">
-              <FaInstagram />
-            </a>
-
-            <a href="#" aria-label="LinkedIn">
-              <FaLinkedinIn />
-            </a>
-
-            <a href="#" aria-label="GitHub">
-              <FaGithub />
-            </a>
+          <div className="resq-footer-col">
+            <h4 className="resq-footer-heading">Project Info</h4>
+            <p style={{ fontSize: '0.8125rem', lineHeight: '1.6', color: 'rgba(255,255,255,0.6)' }}>
+              Academic capstone project prototype. Built with plain React & Vite for clarity and extensibility.
+            </p>
+            <div style={{ marginTop: '10px' }}>
+              <button
+                type="button"
+                className="resq-btn-ghost"
+                style={{ color: '#F6C88B', padding: '0', fontSize: '0.8125rem' }}
+                onClick={onOpenAuth}
+              >
+                View System Architecture Status →
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Quick Links */}
-        <div className="footer-section">
-          <h3>Quick Links</h3>
-
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-
-            <li>
-              <a href="/food">Find Food</a>
-            </li>
-
-            <li>
-              <a href="/about">About Us</a>
-            </li>
-
-            <li>
-              <a href="/contact">Contact</a>
-            </li>
-          </ul>
+        <div className="resq-footer-bottom">
+          <span>© {new Date().getFullYear()} ResQPlate Initiative. Community food rescue demonstration.</span>
+          <span>Not a food delivery service · Direct pickup and donation model</span>
         </div>
-
-        {/* Resources */}
-        <div className="footer-section">
-          <h3>Resources</h3>
-
-          <ul>
-            <li>
-              <a href="/how-it-works">How It Works</a>
-            </li>
-
-            <li>
-              <a href="/faq">FAQ</a>
-            </li>
-
-            <li>
-              <a href="/privacy">Privacy Policy</a>
-            </li>
-
-            <li>
-              <a href="/terms">Terms & Conditions</a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Contact Information */}
-        <div className="footer-section">
-          <h3>Contact</h3>
-
-          <div className="contact-item">
-            <FaEnvelope />
-            <span>support@resqplate.com</span>
-          </div>
-
-          <div className="contact-item">
-            <FaPhoneAlt />
-            <span>+94 77 123 4567</span>
-          </div>
-
-          <div className="contact-item">
-            <FaMapMarkerAlt />
-            <span>Sri Lanka</span>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Bottom Footer */}
-      <div className="footer-bottom">
-        <p>
-          © {currentYear} ResQPlate. All rights reserved.
-        </p>
-
-        <p>
-          Reducing food waste, one meal at a time.
-        </p>
       </div>
     </footer>
   );
 }
-
-export default Footer;

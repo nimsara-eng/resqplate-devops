@@ -16,6 +16,7 @@ import pastriesImg from './assets/french-pastries.jpg';
 import harvestBowlsImg from './assets/harvest-bowls.jpg';
 import cateringPlattersImg from './assets/catering-platters.jpg';
 
+
 // Initial Sample Listings for Demonstration
 const INITIAL_LISTINGS = [
   {
@@ -738,7 +739,7 @@ export default function App() {
                   <span>✓ Support local student pantries and shelters</span>
                 </div>
                 <div className="resq-cta-perk-item">
-                  <span>✓ Bill Emerson Good Samaritan Act protection</span>
+                  <span>✓ Support responsible community food sharing</span>
                 </div>
                 <div className="resq-cta-perk-item">
                   <span>✓ Zero commission or subscription costs</span>
@@ -755,7 +756,6 @@ export default function App() {
         onOpenAuth={() => setIsAuthModalOpen(true)}
       />
       
-
       {/* Modal: Pickup Details & Reservation */}
       {selectedListing && (
         <div
@@ -796,7 +796,7 @@ export default function App() {
               </div>
 
               <div className="resq-modal-notice-box">
-                <strong>Demonstration Note:</strong> This is an interactive frontend prototype. Reservations generated here create a local confirmation pass for UI testing. Live database syncing is connected in the backend module.
+                <strong>Demonstration Note:</strong> This is a frontend prototype. Reservations are simulated and are not yet saved to the database.
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', fontSize: '0.875rem' }}>

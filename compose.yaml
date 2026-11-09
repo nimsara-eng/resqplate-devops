@@ -31,8 +31,8 @@ services:
 
 volumes:
   resqplate-mongo-data:
-    external: true
+    name: resqplate-mongo-data
 
 networks:
   resqplate-network:
-    external: true
+    

@@ -18,6 +18,8 @@ services:
       - ./backend/.env.mongo
     volumes:
       - resqplate-mongo-data:/data/db
+      # Creates the app user on first start (empty volume only)
+      - ./mongo-init:/docker-entrypoint-initdb.d:ro
     networks:
       resqplate-network:
         aliases:

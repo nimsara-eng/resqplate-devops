@@ -15,4 +15,5 @@ EXPOSE 5000
 
 USER node
 
-CMD ["npm", "start"]
+# Run node directly (not via npm) so it receives the stop signal from Docker
+CMD ["node", "src/server.js"]

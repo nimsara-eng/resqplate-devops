@@ -1,0 +1,40 @@
+
+services:
+  backend:
+    build: ./backend
+    env_file:
+      - ./backend/.env.container
+    ports:
+      - "127.0.0.1:5000:5000"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - resqplate-network
+
+  mongodb:
+    image: mongo:8
+    env_file:
+      - ./backend/.env.mongo
+    volumes:
+      - resqplate-mongo-data:/data/db
+      # Creates the app user on first start (empty volume only)
+      - ./mongo-init:/docker-entrypoint-initdb.d:ro
+    networks:
+      resqplate-network:
+        aliases:
+          - resqplate-mongodb
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand({ ping: 1 }).ok"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  resqplate-mongo-data:
+    name: resqplate-mongo-data
+
+networks:
+  resqplate-network:
+    
